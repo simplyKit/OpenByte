@@ -1,4 +1,5 @@
 from modules.components import *
+from modules.gui import GUI
 import sys
 
 debug=True
@@ -27,11 +28,14 @@ program.close()
 cpu = CPU(memory)
 cpu.reset() # and reset it
 
+# Create the GUI
+gui = GUI(cpu, memory)
+
 # Loop
-while True:
+while gui.running():
     cpu.decode_instructions()
-    if debug:
-        print(f"A: {hex(cpu.a)}, X: {hex(cpu.x)}, Y: {hex(cpu.y)}, PC: {hex(cpu.pc)}, IR: {hex(cpu.ir)}, SP: {hex(cpu.sp)}, Flags: {bin(cpu.flags)}")
-        input("Press Enter to continue...")
+    gui.update()
+
+gui.shutdown()
 
 

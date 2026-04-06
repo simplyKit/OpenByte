@@ -14,9 +14,9 @@ LDY 0x00
 
 loop:
     ; Increment all three registers
-    INA 0x01
-    INX 0x01
-    INY 0x01
+    ADA 0x01
+    ADX 0x01
+    ADY 0x01
 
     ; Store results to memory
     STA 0x0100

@@ -8,6 +8,7 @@ An 8-bit computer emulator written in python. It's based off of 8-bit systems of
 GETTING STARTED
 --- 
 Python 3+ required
+dearpygui required
 
 ### Running a program
 You can run a program by typing the following in a terminal from the root folder: `python3 .\src\main.py (path to an assembled program)`
@@ -30,7 +31,7 @@ Registers:
 - Program Counter : 16-bit
 - Instruction Register : 8-bit
 - Stack Pointer : 8-bit
-- Flags : 1-nibble
+- Flags : 8-bit
 
 Instruction Version: OPENBYTE v1.0.0
 
@@ -67,15 +68,17 @@ Register Specific
 - A Register
     - 0x01 : LDA : Load A register with a value from the next memory address
     - 0x02 : STA : Store A register to a value in memory specified by the next two memory values
-    - 0x03 : INA : Increments A Register by the value in the next memory address
+    - 0x03 : ADA : Adds to the A register by the value in the next memory address
+    - 0x04 : INA : Increments the A register by one
 - X Register
     - 0x11 : LDX : Loads X register with a value from the next memory address
-    - 0x12 : STX : Stores X Register to a value in memory specified by the next two memory values
-    - 0x13 : INX : Increments X Register by the value in the next memory address
-- Y Register
-    - 0x21 : LDY : Loads Y Register with a value from the next memory address
-    - 0x22 : STY : Stores Y Register to a value in memory specified by the next two memory values
-    - 0x23 : INY : Increments the Y Register by the value in the next memory address 
+    - 0x12 : STX : Stores X register to a value in memory specified by the next two memory values
+    - 0x13 : ADX : Adds to the X register by the value in the next memory address
+    - 0x14 : INX : Increments the X register by one
+- Y Registers
+    - 0x21 : LDY : Loads Y register with a value from the next memory address
+    - 0x22 : STY : Stores Y register to a value in memory specified by the next two memory values
+    - 0x23 : ADY : Adds to the Y register by the value in the next memory address
 
 Flow Control
 - 0x00 : NOP : No Operation

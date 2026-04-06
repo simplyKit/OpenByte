@@ -58,7 +58,7 @@ def assemble():
 
             if mnemonic == ".org": # .org
                 current_pc = int(tokens[1], 16) if tokens[1].startswith("0x") else int(tokens[1])
-            
+
             elif mnemonic == "db": # direct byte
                 for val_str in tokens[1:]:
                     val = int(val_str, 16) if val_str.startswith("0x") else int(val_str)
@@ -75,7 +75,7 @@ def assemble():
                     # Check if operand is a label
                     val = int(labels[operand_str]) if operand_str in labels else \
                           (int(operand_str, 16) if operand_str.startswith("0x") else int(operand_str))
-
+                    
                     for byte in val.to_bytes(size, 'little'):
                         memory_image[current_pc] = byte
                         current_pc += 1

@@ -1,7 +1,7 @@
 from . import instructions
 
 class Memory:
-    def __init__(self, size:int=0xFFFF):
+    def __init__(self, size:int=0x10000):
         self.memory:list[int] = [0x00]*size
         self.size = size
 
