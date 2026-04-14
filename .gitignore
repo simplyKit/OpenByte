@@ -1,2 +1,4 @@
 .vscode
 8-bit cpu.code-workspace
+__pycache__/
+/.venv
