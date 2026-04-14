@@ -20,7 +20,7 @@ class GUI:
 
         dpg.create_context() # Create the GUI context
         self._init_layout() # Create the GUI layout
-        dpg.create_viewport(title="Debugger", width=800, height=600)
+        dpg.create_viewport(title="Debugger", width=1000, height=600)
         dpg.setup_dearpygui()
         dpg.show_viewport()
 
@@ -34,7 +34,7 @@ class GUI:
             dpg.add_text("Y: 0x00", tag="y")
             dpg.add_text("Flags: 0b00000000", tag="flags")
         
-            with dpg.window(label="Memory", width=250, height=250, pos=(250, 0), no_close=True):
+            with dpg.window(label="Memory", width=750, height=500, pos=(250, 0), no_close=True):
                 dpg.add_text("Jump to: ")
 
                 dpg.add_input_text(tag="jump_addr", width=100, on_enter=True, callback=self._jump_to_address)
