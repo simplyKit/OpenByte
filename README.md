@@ -7,7 +7,8 @@ An 8-bit computer emulator written in python. It's based off of 8-bit systems of
 
 GETTING STARTED
 --- 
-Python 3+ required<br>
+Python 3+ required
+
 dearpygui required
 
 ### Running a program

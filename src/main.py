@@ -1,6 +1,7 @@
 from modules.components import *
 from modules.gui import GUI
 import sys
+import os
 
 debug=True
 
@@ -28,14 +29,32 @@ program.close()
 cpu = CPU(memory)
 cpu.reset() # and reset it
 
-# Create the GUI
-gui = GUI(cpu, memory)
+# Create the GUI only if display is available
+gui = None
+if os.environ.get('DISPLAY'):
+    try:
+        gui = GUI(cpu, memory)
+    except Exception as e:
+        print(f'Warning: Could not initialize GUI: {e}')
+        print('Running in headless mode')
+else:
+    print('No display available. Running in headless mode')
 
 # Loop
-while gui.running():
-    cpu.decode_instructions()
-    gui.update()
-
-gui.shutdown()
+if gui:
+    while gui.running():
+        cpu.decode_instructions()
+        gui.update()
+    gui.shutdown()
+else:
+    # Headless execution - just run for a limited number of cycles
+    print('Running 100 instruction cycles...')
+    for i in range(100):
+        try:
+            cpu.decode_instructions()
+        except Exception as e:
+            print(f'Instruction {i}: {e}')
+            break
+    print('Headless execution complete')
 
 
